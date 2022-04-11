@@ -14,7 +14,7 @@ RC = ddply(df, .(RankingsCount), nrow)
 RCTotal <- sum(RC$V1)
 
 #Percentages Calculations
-RCProportions <- (RC$V1/RCTotal)*100
+RCProportions <- round((RC$V1/RCTotal)*100, digits=2)
 
 # Data for the table
 Rankings <- RC$RankingsCount
@@ -32,3 +32,12 @@ tbl$cells$setColumn(2, cellTypes="cell", rawValues=Numbers)
 tbl$cells$setColumn(3, cellTypes="cell", rawValues=Pro)
                     formats=list("%.2f"))
 tbl$renderTable()
+
+# Currency Diversification
+slices <- Numbers
+lbls <- Rankings
+pct <- Pro
+lbls <- paste(lbls, pct) # add percents to labels
+lbls <- paste(lbls,"%",sep="") # ad % to labels
+pie(slices,labels = lbls, col=rainbow(length(lbls)),
+    main="Credit Quality")

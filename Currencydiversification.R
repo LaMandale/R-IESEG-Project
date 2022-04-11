@@ -30,7 +30,7 @@ sumfibseg2 <- sum(c(CurrencyNumbers[29], CurrencyNumbers[26], CurrencyNumbers[8]
 sumfibseg3 <- sum(c(CurrencyPro[29], CurrencyPro[26], CurrencyPro[8], CurrencyPro[13], CurrencyPro[18]))
 
 
-#Call the library  and Table Contruction
+#Call the library  and Table Construction
 library(basictabler)
 tbl <- BasicTable$new()
 tbl$cells$setCell(1, 1, cellType="root", rawValue="Currency Diversification")
@@ -49,7 +49,7 @@ pct <- fibseq3
 lbls <- paste(lbls, pct) # add percents to labels
 lbls <- paste(lbls,"%",sep="") # ad % to labels
 pie(slices,labels = lbls, col=rainbow(length(lbls)),
-    main="Pie Chart of Countries")
+    main="Currency Diversification")
 
 
 
